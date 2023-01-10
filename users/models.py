@@ -3,8 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.utils import timezone
 
 class User(AbstractBaseUser):
-    name = models.CharField(blank=True)
-    username = models.CharField(unique=True)
+    name = models.CharField(max_length=150, blank=True)
+    username = models.CharField(max_length=40, unique=True)
     email = models.EmailField(unique=True)
     mobile_number = models.EmailField(unique=True, blank=True)
     is_staff = models.BooleanField(default=False)
