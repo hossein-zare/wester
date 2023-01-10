@@ -1,0 +1,11 @@
+.btn {
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn-white {
+    color: black;
+    background-color: white;
+    padding-inline: 10px;
+    padding-block: 7px;
+}
