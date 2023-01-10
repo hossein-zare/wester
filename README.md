@@ -1,6 +1,10 @@
 # Wester
 A dreamful social networking platform.
 
+## Requirements
++ Python 3.11.1, Old versions may also work!
++ Django 4.1.4
+
 ## Installation
 1. Rename `wester/settings.example.py` to `settings.py`
 2. Generate your own secret key
