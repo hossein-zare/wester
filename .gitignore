@@ -1,7 +1,7 @@
 # Ignores
 __pycache__/
 **/migrations/*
-wester/settings.py
+wester/settingss.py
 
 # Won't ignore
 !__init__.py
