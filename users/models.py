@@ -1,17 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
-from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
 class User(AbstractBaseUser):
-    username = models.CharField(_("username"), max_length=40, unique=True)
-    first_name = models.CharField(_("first name"), max_length=150, blank=True)
-    last_name = models.CharField(_("last name"), max_length=150, blank=True)
-    email = models.EmailField(_("email address"), blank=True)
-    is_staff = models.BooleanField(_("staff status"), default=False)
-    is_active = models.BooleanField(_("active"), default=True)
-    date_joined = models.DateTimeField(_("date joined"), default=timezone.now)
+    name = models.CharField(blank=True)
+    username = models.CharField(unique=True)
+    email = models.EmailField(unique=True)
+    mobile_number = models.EmailField(unique=True, blank=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    is_restricted = models.BooleanField(default=False)
+    date_joined = models.DateTimeField(default=timezone.now)
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["email"]
+
+    def __str__(self):
+        return self.name or self.username
