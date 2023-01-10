@@ -1,4 +1,6 @@
+# Ignores
 __pycache__/
-
 **/migrations/*
+
+# Won't ignore
 !__init__.py
