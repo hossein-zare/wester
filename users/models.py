@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.utils import timezone
+from wester.fields import UnsignedAutoField
 
 class User(AbstractBaseUser):
+    id = UnsignedAutoField(primary_key=True)
     name = models.CharField(max_length=150, blank=True)
     username = models.CharField(max_length=40, unique=True)
     email = models.EmailField(unique=True)
@@ -10,7 +12,8 @@ class User(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_restricted = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(default=timezone.now)
+    updated_at = models.DateTimeField(default=timezone.now)
 
     EMAIL_FIELD = "email"
     USERNAME_FIELD = "username"
