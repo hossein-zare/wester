@@ -3,7 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.utils import timezone
 from django.conf import settings
 from rest_framework.authtoken.models import Token as AuthToken
-from users.managers import UserManager
+
+from .managers import UserManager
 
 class User(AbstractBaseUser):
     name = models.CharField(max_length=150, null=True)
