@@ -18,6 +18,11 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+h1, h2, h3, h4 {
+    padding: 0;
+    margin: 0;
+}
+
 ul {
     display: flex;
     align-items: center;
@@ -25,9 +30,17 @@ ul {
 }
 
 .container {
+    min-width: 0px;
+    width: 100%;
     max-width: 1000px;
     margin-inline: auto;
     padding-inline: 10px;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 #root > .header {

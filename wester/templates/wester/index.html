@@ -1,5 +1,20 @@
 {% extends 'wester/layouts/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'wester/css/style.css' %}">
+{% endblock %}
 
 {% block content %}
-    Hello World
+    <div class="page-content">
+        <div class="welcome-container">
+            <img class="welcome" src="{% static 'wester/svg/welcome.svg' %}">
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Sign up</h3>
+            </div>
+        </div>
+    </div>
 {% endblock %}

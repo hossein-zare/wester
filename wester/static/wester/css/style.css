@@ -1,0 +1,31 @@
+#root > .content {
+    display: flex;
+    flex: 1;
+    align-self: stretch;
+    padding-block: 25px;
+}
+
+.page-content {
+    display: flex;
+    width: 100%;
+}
+
+.page-content > .welcome-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-content > .welcome-container > .welcome {
+    width: 100%;
+}
+
+.page-content > .cards {
+    width: 350px;
+}
+
+.page-content > .cards > .card {
+    border-radius: 10px;
+    padding: 20px;
+}
