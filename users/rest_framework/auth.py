@@ -1,7 +1,7 @@
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.exceptions import AuthenticationFailed
 
-from .models import Token
+from ..models import Token
 
 class CustomTokenAuthentication(TokenAuthentication):
     model = Token
