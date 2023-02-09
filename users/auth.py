@@ -21,3 +21,8 @@ class CustomTokenAuthentication(TokenAuthentication):
             })
 
         return token.user, token
+
+def create_token(request, user):
+    data = {}
+
+    return Token.objects.create(user=user, data=json.dumps(data), ip='127.0.0.1')
