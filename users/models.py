@@ -3,11 +3,9 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.utils import timezone
 from django.conf import settings
 from rest_framework.authtoken.models import Token as AuthToken
-from wester.fields import UnsignedAutoField
 from users.managers import UserManager
 
 class User(AbstractBaseUser):
-    id = UnsignedAutoField(primary_key=True)
     name = models.CharField(max_length=150, null=True)
     username = models.CharField(max_length=40, unique=True)
     email = models.EmailField(unique=True)
