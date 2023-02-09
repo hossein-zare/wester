@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token as AuthToken
 from .managers import UserManager
 
 class User(AbstractBaseUser):
-    name = models.CharField(max_length=150, null=True)
+    name = models.CharField(max_length=50, null=True)
     username = models.CharField(max_length=40, unique=True)
     email = models.EmailField(unique=True)
     email_verified = models.BooleanField(default=False)
