@@ -10,7 +10,7 @@ class UserManager(BaseUserManager):
             raise ValueError('Email is required')
 
         user = self.model(
-            name = name,
+            name = name if len(name) > 0 else None,
             username = username.lower(),
             email = self.normalize_email(email),
             email_verified = email_verified,
