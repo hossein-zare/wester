@@ -1,6 +1,8 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework import status
 from operator import itemgetter
+from django.utils import timezone
 
 from wester.rest_framework.permissions import IsGuest
 from wester.utils import get_client_ip_address
@@ -36,3 +38,10 @@ def login(request):
     return Response({
         'token': token
     })
+
+@api_view(['DELETE'])
+def logout(request):
+    request.auth.deleted_at = timezone.now()
+    request.auth.save()
+
+    return Response(status=status.HTTP_200_OK)
