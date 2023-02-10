@@ -27,8 +27,8 @@ class CustomTokenAuthentication(TokenAuthentication):
         return token.user, token
 
 def create_token(request, user):
-    token = get_random_string(32)
+    key = get_random_string(100)
     data = {}
     ip = get_client_ip_address(request)
 
-    return Token.objects.create(user=user, token=token, data=json.dumps(data), ip=ip)
+    return Token.objects.create(user=user, key=key, data=json.dumps(data), ip=ip)
