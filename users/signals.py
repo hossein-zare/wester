@@ -4,8 +4,11 @@ from django.conf import settings
 
 from .models import Permission
 
-# Example:
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_permissions(sender, instance=None, created=False, **kwargs):
+    """
+    Create a permission record for user on creation.
+    """
+
     if created:
         Permission.objects.create(user=instance)
