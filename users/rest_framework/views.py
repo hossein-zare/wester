@@ -52,4 +52,5 @@ def auth(request):
         'id': request.user.id,
         'name': request.user.name,
         'username': request.user.username,
+        'profile_picture': request.user.profile_picture,
     })
