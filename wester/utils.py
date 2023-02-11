@@ -2,6 +2,7 @@ def get_app_name(package):
     """
     Get the app name.
 
+    Example:
     Input: __package__
     Output: users
     """
