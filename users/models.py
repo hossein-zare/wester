@@ -30,4 +30,4 @@ class User(AbstractBaseUser):
 
 class Permission(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    add_post = models.BooleanField(default=True)
+    create_post = models.BooleanField(default=True)
