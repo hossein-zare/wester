@@ -7,7 +7,7 @@ from django.db import transaction
 
 from wester.rest_framework.permissions import IsGuest
 from wester.utils import get_client_ip_address
-from .serializers import RegisterSerializer, LoginSerializer
+from .serializers import RegisterSerializer, LoginSerializer, AuthSerializer
 from ..models import User
 from .auth import create_token
 
@@ -69,12 +69,6 @@ def auth(request):
     Get the current user's insensitive information.
     """
 
-    return Response({
-        'id': request.user.id,
-        'name': request.user.name,
-        'username': request.user.username,
-        'profile_picture': request.user.profile_picture,
-        'permissions': {
-            'add_post': request.user.has_perm('posts.add_post')
-        }
-    })
+    serializer = AuthSerializer(request.user)
+
+    return Response(serializer.data)
