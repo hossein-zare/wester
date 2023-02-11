@@ -54,7 +54,7 @@ class PermissionSerializer(serializers.BaseSerializer):
 
     def to_representation(self, instance):
         return {
-            'can_add_post': instance.can_add_post,
+            'add_post': instance.add_post,
         }
 
 class AuthSerializer(serializers.BaseSerializer):
