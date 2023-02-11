@@ -45,3 +45,11 @@ def logout(request):
     request.auth.save()
 
     return Response(status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def auth(request):
+    return Response({
+        'id': request.user.id,
+        'name': request.user.name,
+        'username': request.user.username,
+    })
