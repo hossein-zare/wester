@@ -3,8 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
-from .serializers import PostSerializer
 from users.rest_framework.permissions import CanUser
+from .serializers import PostSerializer
 from ..models import Post
 
 class Posts(APIView):
