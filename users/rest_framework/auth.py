@@ -14,18 +14,20 @@ class CustomTokenAuthentication(TokenAuthentication):
             token = self.model.objects.select_related('user').get(key=key)
         except self.model.DoesNotExist:
             raise AuthenticationFailed({
-                'error': 'Invalid or Inactive Token',
-                'is_authenticated': False
+                'detail': 'Invalid token'
             })
  
         if not token.deleted_at == None or not token.user.is_active:
             raise AuthenticationFailed({
-                'error': 'Invalid user',
-                'is_authenticated': False
+                'detail': 'Invalid or inactive token',
             })
 
         return token.user, token
 
+"""
+The token key must be encrypted and saved in the database
+But for development we go with plain-text.
+"""
 def create_token(request, user):
     key = get_random_string(100)
     data = {}
