@@ -24,11 +24,12 @@ class CustomTokenAuthentication(TokenAuthentication):
 
         return token.user, token
 
-"""
-The token key must be encrypted and saved in the database
-But for development we go with plain-text.
-"""
 def create_token(request, user):
+    """
+    The token key must be encrypted and saved in the database
+    But for development we go with plain-text.
+    """
+
     key = get_random_string(100)
     data = {}
     ip = get_client_ip_address(request)
