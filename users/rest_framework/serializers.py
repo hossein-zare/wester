@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator, ValidationError
-from rest_framework.authtoken import views
 from django.contrib.auth.hashers import check_password
 
 from wester.validators import UsernameValidator
@@ -64,7 +63,7 @@ class AuthSerializer(serializers.BaseSerializer):
 
     def to_representation(self, instance):
         return {
-            'id': instance.id,
+            'id': str(instance.id),
             'name': instance.name,
             'username': instance.username,
             'profile_picture': instance.profile_picture,
