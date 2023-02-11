@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from operator import itemgetter
 from django.utils import timezone
+from django.db import transaction
 
 from wester.rest_framework.permissions import IsGuest
 from wester.utils import get_client_ip_address
@@ -12,7 +13,15 @@ from .auth import create_token
 
 @api_view(['POST'])
 @permission_classes([IsGuest])
+@transaction.atomic
 def register(request):
+    """
+    Register a new user.
+
+    After the creation a permission row is created using signals
+    And a rest framework token.
+    """
+
     serializer = RegisterSerializer(data=request.data)
 
     if not serializer.is_valid():
@@ -22,12 +31,16 @@ def register(request):
     token = create_token(request, user).key
 
     return Response({
-        'token': key
+        'token': token
     })
 
 @api_view(['POST'])
 @permission_classes([IsGuest])
 def login(request):
+    """
+    Login with username and password.
+    """
+
     serializer = LoginSerializer(data=request.data)
 
     if not serializer.is_valid():
@@ -41,6 +54,10 @@ def login(request):
 
 @api_view(['DELETE'])
 def logout(request):
+    """
+    Log the user out and set the token as deleted.
+    """
+
     request.auth.deleted_at = timezone.now()
     request.auth.save()
 
@@ -48,9 +65,16 @@ def logout(request):
 
 @api_view(['GET'])
 def auth(request):
+    """
+    Get the current user's insensitive information.
+    """
+
     return Response({
         'id': request.user.id,
         'name': request.user.name,
         'username': request.user.username,
         'profile_picture': request.user.profile_picture,
+        'permissions': {
+            'add_post': request.user.has_perm('posts.add_post')
+        }
     })
