@@ -10,6 +10,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
     email_verified = models.BooleanField(default=False)
     mobile_number = models.CharField(max_length=12, unique=True, null=True)
+    profile_picture = models.CharField(max_length=100, null=True)
     is_staff = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
