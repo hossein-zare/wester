@@ -16,6 +16,6 @@ def create(request):
     if not serializer.is_valid():
         return Response(serializer.errors)
 
-    post = serializer.save(user=request.user)
+    serializer.save(user=request.user)
 
     return Response(serializer.data)
