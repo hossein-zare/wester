@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 
 from .serializers import PostSerializer
-from users.permissions import CanUser
+from users.rest_framework.permissions import CanUser
 
 @api_view(['POST'])
 @permission_classes([CanUser('create_post')])

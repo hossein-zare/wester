@@ -4,7 +4,7 @@ from rest_framework import status
 from django.utils import timezone
 from django.db import transaction
 
-from wester.rest_framework.permissions import IsGuest
+from .permissions import IsGuest
 from .serializers import RegisterSerializer, LoginSerializer, AuthSerializer
 from ..models import User
 from .auth import create_token
