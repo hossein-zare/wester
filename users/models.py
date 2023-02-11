@@ -29,5 +29,5 @@ class User(AbstractBaseUser):
         return self.name or self.username
 
 class Permission(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     can_add_post = models.BooleanField(default=True)
