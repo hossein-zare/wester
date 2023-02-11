@@ -1,12 +1,10 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
-from operator import itemgetter
 from django.utils import timezone
 from django.db import transaction
 
 from wester.rest_framework.permissions import IsGuest
-from wester.utils import get_client_ip_address
 from .serializers import RegisterSerializer, LoginSerializer, AuthSerializer
 from ..models import User
 from .auth import create_token
