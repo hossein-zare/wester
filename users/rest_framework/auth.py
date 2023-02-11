@@ -26,7 +26,7 @@ class CustomTokenAuthentication(TokenAuthentication):
 
 def create_token(request, user):
     """
-    Create a token for the user.
+    Create a rest framework token for the user.
 
     The token key must be encrypted and saved in the database
     But for development we go with plain-text.
